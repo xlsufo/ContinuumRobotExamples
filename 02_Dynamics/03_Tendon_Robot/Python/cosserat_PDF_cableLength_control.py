@@ -356,8 +356,8 @@ class TendonRobotPDE:
         print(">> Starting initial static boundary value problem solving...")
         t_start_static = time.time()
         guessPre = fsolve(self.staticBVP, np.zeros(6 + self.num_tendons))
-        self.Y = np.copy(self._Y_temp_latest) 
-        self.Z = np.copy(self._Z_temp_latest)
+        self.Y = np.copy(self._Y_temp_latest);   self.Y_prev = np.copy(self.Y)
+        self.Z = np.copy(self._Z_temp_latest);   self.Z_prev = np.copy(self.Z)
         print(f">> Static solving complete. Time elapsed: {time.time() - t_start_static:.4f}s")
         
         # Record initial state
